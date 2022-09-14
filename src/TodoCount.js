@@ -1,10 +1,12 @@
 import React from "react";
+import './TodoCount.css'
 
 function TodoCount(){
     return (
         <React.Fragment>
-            <h1> Tienes 2 de 3 tareas completas</h1>
-            <h2>Vamos bien</h2>
+        <header className="titulo">
+            <h1>Tienes 2 de 3 tareas completas</h1>
+        </header>
         </React.Fragment>
     );
 }

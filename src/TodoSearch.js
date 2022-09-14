@@ -4,10 +4,12 @@ function TodoSearch(){
     return (
         <React.Fragment>
 
-            <label>
-                Buscador
-                <input placeholder="escriba para buscar"/>
-            </label>
+            <div className="card">
+                <label className="">
+                    Buscador
+                    <input placeholder="escriba para buscar"/>
+                </label>
+            </div>
         </React.Fragment>
     );
 }

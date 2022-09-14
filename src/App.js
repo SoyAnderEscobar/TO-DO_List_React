@@ -3,6 +3,7 @@ import { TodoCount} from "./TodoCount";
 import { TodoSearch} from "./TodoSearch";
 import { TodoList} from "./TodoList";
 import {TodoItem} from './TodoItem';
+import { TodoButton } from "./TodoButton";
 
 const todos =[
 
@@ -25,6 +26,8 @@ function App(props) {
 
         ))}
       </TodoList>
+
+      <TodoButton/>
     </React.Fragment>
   );
 }
