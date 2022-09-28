@@ -10,6 +10,10 @@ const todos =[
   {text:"cortar cebolla", completed:'false'},
   {text:"cocinar", completed:'false'},
   {text:"comer", completed:'false'},
+  
+  {text:"cortar cebolla", completed:'false'},
+  {text:"cocinar", completed:'false'},
+  {text:"comer", completed:'false'},
 ];
 
 

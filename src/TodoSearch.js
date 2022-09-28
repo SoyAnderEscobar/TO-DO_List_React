@@ -1,4 +1,5 @@
 import React from "react";
+import './TodoSearch.css';
 
 function TodoSearch(){
     return (
@@ -6,8 +7,7 @@ function TodoSearch(){
 
             <div className="card">
                 <label className="">
-                    Buscador
-                    <input placeholder="escriba para buscar"/>
+                    <input placeholder="escriba para buscar" className="buscador"/>
                 </label>
             </div>
         </React.Fragment>

@@ -1,22 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap'); */
 
 *{
-  font-family: 'Inter', sans-serif;
+  /* font-family: 'Inter', sans-serif; */
   margin:0;
   padding:0;
   box-sizing: border-box;
 }
 
+html{
+  font-size: 62.5%;
+}
+
 body{
   height: 100vh;
+  font-size: 1.6rem;
   background-image: radial-gradient(circle at -2.22% 93.82%, #96ceff 0, #5389f2 50%, #17498a 100%);
 }
 
 .card{
   color:rgb(59, 57, 57);
-  margin:5%;
-  padding: 3%;
+  margin:2rem;
+  padding: 1rem;
   text-align: center;
   background: #d7d8d8 ;
-  border-radius: 15px;
+  border-radius: 1rem;
 }

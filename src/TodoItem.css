@@ -1,0 +1,13 @@
+li{
+    list-style: none;
+    background-color: #fff;
+    margin:1rem;
+    padding:2rem;
+    border-radius: 2rem;
+}
+
+li.active{
+    text-decoration: line-through;
+    background-color: rgb(142, 229, 154);
+
+}
