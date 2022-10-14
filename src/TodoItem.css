@@ -4,10 +4,36 @@ li{
     margin:1rem;
     padding:2rem;
     border-radius: 2rem;
+    display: flex;
+    justify-content: space-between;
+    /* background: rgb(236,228,111);
+    background: linear-gradient(0deg, rgba(236,228,111,1) 0%, rgba(255,255,255,1) 47%, rgba(255,255,255,1) 70%);  */
 }
 
 li.active{
-    text-decoration: line-through;
-    background-color: rgb(142, 229, 154);
+    background: rgb(121,212,129);
+    background: linear-gradient(40deg, rgba(121,212,129,1) 10%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+}
 
+.item-text.active{
+    text-decoration: line-through;
+}
+
+.item-icon{
+    font-size: 2.5rem;
+    transition: all ease-in 1s;
+}
+
+.item-text{
+    align-self:center;
+}
+
+.item-icon-delete:hover{
+    color: red;
+    cursor: pointer;
+}
+
+.item-icon-check:hover{
+    color: green;
+    cursor: pointer;
 }
