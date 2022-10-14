@@ -14,7 +14,7 @@ html{
 body{
   height: 100vh;
   font-size: 1.8rem;
-  background-image: radial-gradient(circle at -2.22% 93.82%, #96ceff 0, #5389f2 50%, #17498a 100%);
+  background-image: radial-gradient(circle at -2.22% 93.82%, #96ceff 0, #5389f2 50%, #50178a 100%);
 }
 
 .card{

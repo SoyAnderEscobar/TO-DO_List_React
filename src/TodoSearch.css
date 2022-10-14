@@ -3,8 +3,11 @@
     height: 3rem;
     border: solid rgba(190, 185, 185, 0.242) ;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 1.8rem;
 }
 
 .buscador:focus{
+    outline: black 1px solid;
 }

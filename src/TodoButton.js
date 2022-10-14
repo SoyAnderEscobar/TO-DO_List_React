@@ -2,8 +2,15 @@ import React from "react";
 import './TodoButton.css'
 
 function TodoButton(){
+
+    const saludo = (nombre)=>{
+        alert(`Hola ${nombre}`)
+    }
+
     return(
-        <button className="ButtonCreateTask">
+        <button className="ButtonCreateTask"
+            onClick={()=> saludo('Anderson')}
+        >
             <span>+</span>
         </button>
     )

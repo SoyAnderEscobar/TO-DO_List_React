@@ -1,6 +1,4 @@
 .ButtonCreateTask{
-    /* padding: .5rem; */
-    /* font-weight: bold; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,12 +16,12 @@
 .ButtonCreateTask:hover{
     transform: rotate(-50deg);
     cursor: pointer;
-    background: #d7d8d8 ;
+    background: #50178a ;
+    /* color: #000; */
+
 }
 .ButtonCreateTask span{
-    color: white;
     font-size: 6rem;
     height: 60%;
     margin-top: -3rem;
 }
-
