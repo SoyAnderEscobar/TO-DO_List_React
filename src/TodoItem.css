@@ -15,17 +15,13 @@ li.active{
     background: linear-gradient(40deg, rgba(121,212,129,1) 10%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
 }
 
-.item-text.active{
+.text-completed{
     text-decoration: line-through;
 }
 
 .item-icon{
     font-size: 2.5rem;
     transition: all ease-in 1s;
-}
-
-.item-text{
-    align-self:center;
 }
 
 .item-icon-delete:hover{

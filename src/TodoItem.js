@@ -3,11 +3,11 @@ import './TodoItem.css'
 
 function TodoItem(props){
     return (
-        <li className="">
+        <li className={`${props.completed && 'active'}`}>
             <span>
             <i class="ri-check-line item-icon item-icon-check"></i>
             </span>
-            <span className="item-text">
+            <span className={`${props.completed && 'text-completed'}`}>
                 {props.text}
             </span>
             <span>
