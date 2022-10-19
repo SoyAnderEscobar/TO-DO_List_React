@@ -8,9 +8,9 @@
 
   const defaultTodos =[
 
-    {text:"cortar cebolla", completed:true},
+    {text:"cortar cebolla", completed:false},
     {text:"cocinar", completed:false },
-    {text:"comer", completed:true },
+    {text:"comer", completed:false },
     {text:"Dormir", completed:false },
   ];
 
@@ -42,13 +42,42 @@
 
       SearchedTodos = todos.filter(todo => {
 
+        //convierto el texto de los todos en minuscula
         const todoText = todo.text.toLocaleLowerCase();
 
+        //convierto el texto en el buscador en minuscula
         let searchText = searchValue.toLocaleLowerCase();
 
+        //retorno los todos
         return todoText.includes(searchText)
 
       });
+
+    }
+
+    const completeTodo = (text) => {
+
+      // console.log(`la tarea ${text} fue completada`)
+
+      const todoKey = todos.findIndex(todo=> todo.text === text )
+
+      const NewTodo = [...todos]
+
+      NewTodo[todoKey].completed=true
+
+      setTodo(NewTodo)
+
+    }
+
+    const deleteTodo = (text)=> {
+
+      const todoKey = todos.findIndex(todo => todo.text === text)
+
+      const NewTodo = [...todos]
+
+      NewTodo.splice(todoKey,1)
+
+      setTodo(NewTodo)
 
     }
 
@@ -68,7 +97,10 @@
         <TodoList>
           { SearchedTodos.map(todo => (
 
-              <TodoItem key={todo.text} text={todo.text} completed={todo.completed}/>
+              <TodoItem key={todo.text} text={todo.text} completed={todo.completed}
+                onCompleted={()=>completeTodo(todo.text)}
+                onDelete={()=>deleteTodo(todo.text)}
+              />
 
           ))}
         </TodoList>
