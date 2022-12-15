@@ -11,55 +11,101 @@ import { AppUi } from "./AppUi";
 
 function useLocalStorage(itemName, itemValue){
 
-  //consulta si en el local storage el item recibido por argumento
-  let storedItem = localStorage.getItem(itemName)
+  const [error, cambiarError] = React.useState(false)
+  const [loading, cambiarLoading] = React.useState(true)
+  //Estados del custom hook
+  const [item, changeItem] = React.useState(itemValue)
 
-  //Defino una variable para ser utilizada mas adelante
-  let defaultItem;
+  React.useEffect(()=>{
 
-  //valido que el storedItem no este vacio
-  if(storedItem){
+    setTimeout(()=>{
 
-    //en caso de no estar vacio parseo el contenido y lo guardo en defaultItem
-    defaultItem= JSON.parse(storedItem)
+      try {
 
-  }else{
+        //consulta si en el local storage el item recibido por argumento
+        let storedItem = localStorage.getItem(itemName)
 
-    storedItem = localStorage.setItem(itemName,JSON.stringify(itemValue))
+        //Defino una variable para ser utilizada mas adelante
+        let defaultItem;
+        //valido que el storedItem no este vacio
+        if(storedItem){
 
-    defaultItem = itemValue
+          //en caso de no estar vacio parseo el contenido y lo guardo en defaultItem
+          defaultItem= JSON.parse(storedItem)
 
-  }
+        }else{
 
-  //Todos
-  const [item, changeItem] = React.useState(defaultItem)
+          storedItem = localStorage.setItem(itemName, JSON.stringify(itemValue) )
 
+          defaultItem = storedItem
+
+        }
+
+        changeItem(defaultItem);
+
+      } catch (error) {
+        cambiarError(error)
+
+      }finally{
+
+        cambiarLoading(false)
+
+      }
+    },1000)
+
+  })
 
   const saveItem = (newItem)=>{
 
-    let stringItem= JSON.stringify(newItem)
+    try {
 
-    localStorage.setItem(itemName, stringItem)
+      let stringItem= JSON.stringify(newItem)
 
-    changeItem(newItem)
+      localStorage.setItem(itemName, stringItem)
+
+      changeItem(newItem)
+    } catch (error) {
+
+      cambiarError(error)
+
+    }
+
 
   }
 
-  return [item, saveItem]
+  return {
+    item,
+    saveItem,
+    loading,
+    error
+  };
+
+  // return [item, saveItem]
 
 }
 
 function App(props) {
-  
+
+  // console.log('antes')
+  // // React.useEffect(()=>{
+  //   console.log('hola')
+  // // })
+  // console.log('despues')
+
+
   /*Estados de la Aplicación*/
 
   //Custom React Hook para almacenar informacion en Local Storage
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1',[])
+  const {
+    item:todos,
+    saveItem:saveTodos,
+    loading,
+    error
+    }= useLocalStorage('TODOS_V1',[])
+  // const [patito, savePatito] = useLocalStorage('PATITO_V1','Hola desde el Local Storage')
 
-  const [patito, savePatito] = useLocalStorage('PATITO_V1','Hola desde el Local Storage')
   //Estado para el buscador del aplicativo
   const [searchValue, setSearchValue] = React.useState('');
-
 
   /*Variables y constantes de la aplicacion*/
 
@@ -71,8 +117,7 @@ function App(props) {
 
     //Declaracion de una variable para ser utilizada con el buscador
     let SearchedTodos=[]
-
-  /*funciones de la aplicacion*/
+    /*funciones de la aplicacion*/
 
     //valido que el buscador este vacio
     if (!searchValue>=1) {
@@ -99,8 +144,6 @@ function App(props) {
 
     const completeTodo = (text) => {
 
-      // console.log(`la tarea ${text} fue completada`) //esto puede ser una buena manera para ver lo que sucede
-
       const todoKey = todos.findIndex(todo=> todo.text === text )
 
       const NewTodo = [...todos]
@@ -123,8 +166,8 @@ function App(props) {
 
     }
 
-  return [
-    <p>{patito}</p>,
+  return (
+
     <AppUi
       TodoCompleted={TodoCompleted}
       total={total}
@@ -134,8 +177,10 @@ function App(props) {
       completeTodo={completeTodo}
       deleteTodo={deleteTodo}
       nombre={props.nombre}
+      loading={loading}
+      error={error}
     />
-  ];
+  )
 
 }
 
