@@ -1,57 +1,70 @@
 import React from "react";
+import { todoContext } from "../TodoContext";
 import { TodoCount} from "../TodoCount";
 import { TodoSearch} from "../TodoSearch";
 import { TodoList} from "../TodoList";
 import {TodoItem} from '../TodoItem';
 import { TodoButton } from "../TodoButton";
+import { Modal } from "../Modal";
 import 'remixicon/fonts/remixicon.css'
 
 
-function AppUi({
-    TodoCompleted,
-    total,
-    searchValue,
-    setSearchValue,
-    loading,
-    error,
-    SearchedTodos,
-    completeTodo,
-    deleteTodo,
-    nombre
-})
+function AppUi()
 {
+
+    const {
+        loading,
+        error,
+        completeTodo,
+        deleteTodo,
+        SearchedTodos,
+        nombre,
+        openModal,
+        setOpenModal
+    } = React.useContext(todoContext)
+
+
     return(
 
         <React.Fragment>
 
-            <TodoCount
-                completed={TodoCompleted}
-                total={total}
-            />
+            <TodoCount/>
 
-            <TodoSearch
-                searchValue={searchValue}
-                setSearchValue={setSearchValue}
-            />
+            <TodoSearch/>
 
-            <TodoList>
+            {/* <todoContext.Consumer>
+                {({loading, error, completeTodo, deleteTodo, SearchedTodos})=>( */}
 
-                {loading  && <p>No te desesperes, estamos cargando</p>}
-                { error && <p>Desesperate, algo salio mal</p> }
-                { (!error && !loading && !SearchedTodos.length ) &&  <p>¡Crea tu primer TODO!</p>}
-                { SearchedTodos.map(todo => (
+                    <TodoList>
 
-                    <TodoItem key={todo.text} text={todo.text} completed={todo.completed}
-                    onCompleted={()=>completeTodo(todo.text)}
-                    onDelete={()=>deleteTodo(todo.text)}
-                    />
+                        {loading  && <p>No te desesperes, estamos cargando</p>}
+                        { error && <p>Desesperate, algo salio mal</p> }
+                        { (!error && !loading && !SearchedTodos.length ) &&  <p>¡Crea tu primer TODO!</p>}
+                        { SearchedTodos.map(todo => (
 
-                ))}
-            </TodoList>
+                            <TodoItem key={todo.text} text={todo.text} completed={todo.completed}
+                            onCompleted={()=>completeTodo(todo.text)}
+                            onDelete={()=>deleteTodo(todo.text)}
+                            />
+
+                        ))}
+                    </TodoList>
+
+                {/* )} */}
+            {/* </todoContext.Consumer> */}
+
+
+            {!!openModal && (
+
+                <Modal>
+                    <p>{SearchedTodos[0]?.text}</p>
+                </Modal>
+            )}
 
             <TodoButton/>
 
             <span style={{margin:'2rem', position:"absolute", marginBottom:"0px" }}>Created by {nombre}</span>
+
 
         </React.Fragment>
 
