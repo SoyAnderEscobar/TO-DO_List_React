@@ -1,14 +1,7 @@
-// import React from "react";
+import React from "react";
 import ReactDOM from 'react-dom';
 
 import "./Modal.css";
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-
-// root.render(
-//   // <React.StrictMode>
-//     <App nombre='Anderson Escobar' />
-//    /* </React.StrictMode> */
-// );
 
 function Modal({children})
 {

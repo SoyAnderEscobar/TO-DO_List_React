@@ -56,6 +56,22 @@ function TodoProvider(props)
 
     }
 
+    const addTodo = (text) => {
+
+        // const todoKey = todos.findIndex(todo=> todo.text === text )
+//   {text:"cortar cebolla", completed:false},
+
+        todos.push({ completed:false, text:text})
+
+        const NewTodo = [...todos]
+
+        // NewTodo[todoKey].completed=true
+
+        saveTodos(NewTodo)
+
+    }
+
+
     const completeTodo = (text) => {
 
         const todoKey = todos.findIndex(todo=> todo.text === text )
@@ -93,7 +109,8 @@ function TodoProvider(props)
             loading,
             error,
             openModal,
-            setOpenModal
+            setOpenModal,
+            addTodo
         }}>
             {props.children}
         </todoContext.Provider>

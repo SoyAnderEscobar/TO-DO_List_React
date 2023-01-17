@@ -6,6 +6,7 @@ import { TodoList} from "../TodoList";
 import {TodoItem} from '../TodoItem';
 import { TodoButton } from "../TodoButton";
 import { Modal } from "../Modal";
+import { TodoForm } from "../TodoForm";
 import 'remixicon/fonts/remixicon.css'
 
 
@@ -57,7 +58,7 @@ function AppUi()
             {!!openModal && (
 
                 <Modal>
-                    <p>{SearchedTodos[0]?.text}</p>
+                    <TodoForm/>
                 </Modal>
             )}
 
